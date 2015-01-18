@@ -18,11 +18,13 @@ var digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var result = '';
 var i;
 
+//TODO: I have to step back and increase
+
 for(var nrPosition = 1; nrPosition <= 10; nrPosition++) {
-    console.log(currentOptions);
+    console.log('factorial: ', nDigits - nrPosition);
     currentOptions = helper.factorial(nDigits - nrPosition);
     digit = 0;
-
+    console.log('currentPosition: ', currentPosition);
     do {
 
         if(!digits[digit + 1]) {
@@ -30,19 +32,23 @@ for(var nrPosition = 1; nrPosition <= 10; nrPosition++) {
         }
 
         digit++;
-        currentPosition += currentOptions * digits[digit];
+        console.log('add: ', currentOptions * digit);
+        currentPosition += currentOptions * digit;
+        console.log('digit index: ', digit, ' digit: ',  digits[digit], 'currentPosition: ', currentPosition);
 
     } while(currentPosition < targetPosition);
 
-
+    console.log('digit selected: ', digits[digit]);
     if(currentPosition > targetPosition) {
-        currentPosition -= currentOptions * digits[digit];
-        digit--;
+        console.log('remove: ', currentOptions * digit);
+        currentPosition -= currentOptions * digit;
+        //digit--;
     }
 
     result += digits[digit];
 
     digits.splice(digit, 1);
+    console.log('-----------------------');
 
 }
 
