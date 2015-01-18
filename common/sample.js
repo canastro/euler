@@ -5,8 +5,8 @@
 
 var BigNumber = require('./big-number');
 
-var nrA = new BigNumber(10);
-var nrB = new BigNumber(25);
+var nrA = new BigNumber('4005779162611968650022');
+var nrB = new BigNumber('100');
 
 //console.log(nrA.add(nrB));
 //console.log(nrA.multiply(nrB));
@@ -15,5 +15,4 @@ nrA.multiply(nrB);
 //nrA.add(nrB);
 
 console.log(nrA);
-
 

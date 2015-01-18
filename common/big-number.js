@@ -4,9 +4,9 @@
  * @constructor
  */
 function BigNumber(n) {
-    console.log('NEW BIGNUMBER: ', n);
+
     if (typeof n === 'number') {
-        n = n + '';
+        n += '';
     }
 
     this.value = n;
@@ -110,17 +110,17 @@ BigNumber.prototype.multiply = function (nBig) {
 
     var result = new BigNumber(0);
 
-    //console.log('multiply: ', this, ' ', nBig);
 
-    var digitsA = this.value.split();
-    var digitsB = nBig.value.split();
+    var digitsA = this.value.split('');
+    var digitsB = nBig.value.split('');
 
     var temp;
+    var tempResult;
     var aCounter = 0;
     var bCounter = 0;
 
     for (var i = digitsA.length - 1; i >= 0; i--) {
-
+        tempResult = new BigNumber(0);
         bCounter = aCounter;
 
         for (var j = digitsB.length - 1; j >= 0; j--) {
@@ -131,13 +131,13 @@ BigNumber.prototype.multiply = function (nBig) {
                 temp.value += '0';
             }
 
+            tempResult.add(temp);
             bCounter++;
         }
 
         aCounter++;
-        result.add(temp);
+        result.add(tempResult);
     }
-
 
     this.value = result.value;
 };
